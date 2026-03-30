@@ -1,0 +1,38 @@
+.editing-form {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f3f4f6;
+
+  &__input {
+    flex: 1;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #605f5f;
+    outline: none;
+  }
+
+  &__button {
+    background: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__error {
+    margin-left: 15px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #ed1c24;
+  }
+
+  &__block{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+}

@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #fafafa;
+  border-top: 1px solid #f3f4f6;
+
+  &__count {
+    font-size: 13px;
+    color: #605f5f;
+  }
+
+  &__button {
+    background: #f3f4f6;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: #605f5f;
+  }
+}

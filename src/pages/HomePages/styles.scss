@@ -1,0 +1,25 @@
+.home-page {
+  min-height: 93vh;
+  background: radial-gradient(#9333ea, #33ea9ed1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+
+  &__title {
+    color: #fff;
+    font-size: 64px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+  }
+
+  &__card {
+    background: #fff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px #000;
+    overflow: hidden;
+  }
+}
