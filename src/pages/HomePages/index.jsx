@@ -28,7 +28,6 @@ class HomePage extends Component {
     this.cancelEditingTask = this.cancelEditingTask.bind(this);
     this.sortTasks = this.sortTasks.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-    this.deleteAllTasks = this.deleteAllTasks.bind(this);
   }
 
   handleInputChange(e) {
@@ -194,14 +193,6 @@ class HomePage extends Component {
     localStorage.setItem("tasks", JSON.stringify(filteredTasks));
   }
 
-  deleteAllTasks() {
-    this.setState({
-      tasks: [],
-    });
-
-    localStorage.setItem("tasks", JSON.stringify([]));
-  }
-
   componentDidMount() {
     const savedTasks = localStorage.getItem("tasks");
     this.setState({
@@ -249,7 +240,6 @@ class HomePage extends Component {
           />
           <Footer
             tasksCount={tasksCount}
-            deleteAllTasks={this.deleteAllTasks}
           />
         </div>
       </div>

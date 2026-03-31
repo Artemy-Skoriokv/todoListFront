@@ -3,7 +3,7 @@ import "./styles.scss";
 
 class Footer extends Component {
   render() {
-    const { tasksCount, deleteAllTasks } = this.props;
+    const { tasksCount } = this.props;
 
     return (
       <div className="footer">
@@ -11,7 +11,6 @@ class Footer extends Component {
         <button
         className="footer__button"
         type="button"
-        onClick={deleteAllTasks}
         >
           Delete All
         </button>
