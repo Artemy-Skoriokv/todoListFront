@@ -20,7 +20,6 @@ class HomePage extends Component {
     this.addTask = this.addTask.bind(this);
     this.handleToggleCheckbox = this.handleToggleCheckbox.bind(this);
     this.handlChangeInput = this.handlChangeInput.bind(this);
-    this.sortTasks = this.sortTasks.bind(this);
   }
 
   handleInputChange(e) {
@@ -85,30 +84,9 @@ class HomePage extends Component {
     const updatedTasks = [...tasks];
     updatedTasks[taskIndex] = updatedTask;
 
-    this.setState({ tasks: updatedTasks }, () => {
-      this.sortTasks();
-    });
+    this.setState({ tasks: updatedTasks});
 
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  }
-
-  sortTasks() {
-    const { tasks } = this.state;
-
-    if (!tasks.length) {
-      return;
-    }
-
-    const sortedTasks = [...tasks].sort((a, b) => {
-      if (a.completed === b.completed) {
-        return 0;
-      }
-      return a.completed ? 1 : -1;
-    });
-
-    this.setState({ tasks: sortedTasks });
-
-    localStorage.setItem("tasks", JSON.stringify(sortedTasks));
   }
 
   handlChangeInput(e) {
