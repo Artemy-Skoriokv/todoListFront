@@ -6,8 +6,6 @@ class TodoList extends Component {
   render() {
     const { 
       tasks,
-      handleToggleCheckbox,
-      handlChangeInput
     } = this.props;
 
     return (
@@ -16,8 +14,6 @@ class TodoList extends Component {
           <Todo
             key={task.id}
             task={task}
-            handleToggleCheckbox={handleToggleCheckbox}
-            handlChangeInput={handlChangeInput}
           />
         ))}
       </div>

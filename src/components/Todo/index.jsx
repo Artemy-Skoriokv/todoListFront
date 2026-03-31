@@ -6,14 +6,13 @@ import "./styles.scss";
 
 class Todo extends Component {
   render() {
-    const { task, handleToggleCheckbox } =
+    const { task } =
       this.props;
 
     return (
       <div className="todo">
         <button
           className={`todo__checkbox ${task.completed ? "todo__checkbox-checked" : ""}`}
-          onClick={() => handleToggleCheckbox(task.id)}
           type="button"
         >
           {task.completed && (

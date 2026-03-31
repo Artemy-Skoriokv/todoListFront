@@ -18,8 +18,6 @@ class HomePage extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.addTask = this.addTask.bind(this);
-    this.handleToggleCheckbox = this.handleToggleCheckbox.bind(this);
-    this.handlChangeInput = this.handlChangeInput.bind(this);
   }
 
   handleInputChange(e) {
@@ -62,40 +60,6 @@ class HomePage extends Component {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
-  handleToggleCheckbox(id) {
-    const { tasks } = this.state;
-
-    if (!id) {
-      return;
-    }
-
-    const taskIndex = tasks.findIndex((task) => task.id === id);
-
-    if (taskIndex === -1) {
-      return;
-    }
-
-    const task = tasks[taskIndex];
-    const updatedTask = {
-      ...task,
-      completed: !task.completed,
-    };
-
-    const updatedTasks = [...tasks];
-    updatedTasks[taskIndex] = updatedTask;
-
-    this.setState({ tasks: updatedTasks});
-
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  }
-
-  handlChangeInput(e) {
-    this.setState({
-      editingText: e.target.value,
-      editingError: "",
-    });
-  }
-
   componentDidMount() {
     const savedTasks = localStorage.getItem("tasks");
     this.setState({
@@ -124,8 +88,6 @@ class HomePage extends Component {
           />
           <TodoList
             tasks={tasks}
-            handleToggleCheckbox={this.handleToggleCheckbox}
-            handlChangeInput={this.handlChangeInput}
           />
           <Footer
             tasksCount={tasksCount}
