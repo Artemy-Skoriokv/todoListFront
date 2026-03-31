@@ -6,7 +6,7 @@ import "./styles.scss";
 
 class Todo extends Component {
   render() {
-    const { task, handleToggleCheckbox, openEditingForm, deleteTask } =
+    const { task, handleToggleCheckbox } =
       this.props;
 
     return (
@@ -32,11 +32,6 @@ class Todo extends Component {
         <button
           className={`todo__button ${task.completed ? "todos__button" : ""}`}
           type="button"
-          onClick={() =>
-            task.completed 
-            ? deleteTask(task.id)
-            : openEditingForm(task.id)
-          }
         >
           <img
             src={task.completed ? cross : pencil}

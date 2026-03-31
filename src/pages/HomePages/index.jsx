@@ -13,19 +13,13 @@ class HomePage extends Component {
       tasks: [],
       newTaskText: "",
       error: "",
-      idEditedTask: null,
-      editingText: "",
-      editingError: "",
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.addTask = this.addTask.bind(this);
     this.handleToggleCheckbox = this.handleToggleCheckbox.bind(this);
-    this.openEditingForm = this.openEditingForm.bind(this);
     this.handlChangeInput = this.handlChangeInput.bind(this);
-    this.validateEditingForm = this.validateEditingForm.bind(this);
-    this.cancelEditingTask = this.cancelEditingTask.bind(this);
     this.sortTasks = this.sortTasks.bind(this);
   }
 
@@ -117,67 +111,9 @@ class HomePage extends Component {
     localStorage.setItem("tasks", JSON.stringify(sortedTasks));
   }
 
-  openEditingForm(id) {
-    const task = this.state.tasks.find((task) => task.id === id);
-
-    if (!task) {
-      return;
-    }
-
-    this.setState({
-      idEditedTask: id,
-      editingText: task.text,
-      editingError: "",
-    });
-  }
-
   handlChangeInput(e) {
     this.setState({
       editingText: e.target.value,
-      editingError: "",
-    });
-  }
-
-  validateEditingForm() {
-    const { idEditedTask, editingText, tasks } = this.state;
-
-    if (!idEditedTask) {
-      return;
-    }
-
-    if (!editingText.trim()) {
-      this.setState({
-        editingError: "Поле не должно быть пустым",
-      });
-      return;
-    }
-
-    const taskIndex = tasks.findIndex((task) => task.id === idEditedTask);
-
-    if (taskIndex === -1) {
-      return;
-    }
-
-    const updatedTasks = [...tasks];
-    updatedTasks[taskIndex] = {
-      ...updatedTasks[taskIndex],
-      text: editingText.trim(),
-    };
-
-    this.setState({
-      tasks: updatedTasks,
-      idEditedTask: null,
-      editingText: "",
-      editingError: "",
-    });
-
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  }
-
-  cancelEditingTask() {
-    this.setState({
-      idEditedTask: null,
-      editingText: "",
       editingError: "",
     });
   }
@@ -193,19 +129,10 @@ class HomePage extends Component {
     const {
       tasks,
       newTaskText,
-      error,
-      idEditedTask,
-      editingText,
-      editingError,
+      error
     } = this.state;
 
     const tasksCount = tasks.length;
-
-    const editingTask = {
-      taskId: idEditedTask,
-      text: editingText,
-      error: editingError,
-    };
 
     return (
       <div className="home-page">
@@ -220,11 +147,7 @@ class HomePage extends Component {
           <TodoList
             tasks={tasks}
             handleToggleCheckbox={this.handleToggleCheckbox}
-            openEditingForm={this.openEditingForm}
             handlChangeInput={this.handlChangeInput}
-            validateEditingForm={this.validateEditingForm}
-            cancelEditingTask={this.cancelEditingTask}
-            editingTask={editingTask}
           />
           <Footer
             tasksCount={tasksCount}
