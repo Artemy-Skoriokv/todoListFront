@@ -88,14 +88,7 @@ class HomePage extends Component {
 
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
-
-  handlChangeInput(e) {
-    this.setState({
-      editingText: e.target.value,
-      editingError: "",
-    });
-  }
-
+  
   componentDidMount() {
     const savedTasks = localStorage.getItem("tasks");
     this.setState({
