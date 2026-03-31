@@ -13,7 +13,6 @@ class TodoList extends Component {
       validateEditingForm,
       cancelEditingTask,
       editingTask,
-      deleteTask
     } = this.props;
 
     return (
@@ -34,7 +33,6 @@ class TodoList extends Component {
               task={task}
               handleToggleCheckbox={handleToggleCheckbox}
               openEditingForm={openEditingForm}
-              deleteTask={deleteTask}
             />
           )
         ))}

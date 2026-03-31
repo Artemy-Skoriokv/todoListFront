@@ -27,7 +27,6 @@ class HomePage extends Component {
     this.validateEditingForm = this.validateEditingForm.bind(this);
     this.cancelEditingTask = this.cancelEditingTask.bind(this);
     this.sortTasks = this.sortTasks.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
   }
 
   handleInputChange(e) {
@@ -183,16 +182,6 @@ class HomePage extends Component {
     });
   }
 
-  deleteTask(id) {
-    const filteredTasks = this.state.tasks.filter((task) => task.id !== id);
-
-    this.setState({
-      tasks: filteredTasks,
-    });
-
-    localStorage.setItem("tasks", JSON.stringify(filteredTasks));
-  }
-
   componentDidMount() {
     const savedTasks = localStorage.getItem("tasks");
     this.setState({
@@ -236,7 +225,6 @@ class HomePage extends Component {
             validateEditingForm={this.validateEditingForm}
             cancelEditingTask={this.cancelEditingTask}
             editingTask={editingTask}
-            deleteTask={this.deleteTask}
           />
           <Footer
             tasksCount={tasksCount}
